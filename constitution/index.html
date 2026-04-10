@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>সংবিধান — NAF Care Group Ltd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-dark:  #0d4a2f;
+      --green-mid:   #1a6b42;
+      --green-light: #2d9e62;
+      --gold:        #c9a84c;
+      --gold-light:  #e8c97a;
+      --cream:       #faf7f0;
+      --cream-dark:  #f0ead8;
+      --text-dark:   #1a1a1a;
+      --text-mid:    #3a3a3a;
+      --text-soft:   #6b6b6b;
+      --white:       #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans Bengali', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,74,47,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+      padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; color: var(--gold-light); font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+    .nav-logo-circle { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--green-dark); font-weight: 900; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+    .nav-btn { background: var(--gold); color: var(--green-dark); padding: 7px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-decoration: none; }
+    @media (max-width: 768px) { .nav-links, .nav-btn { display: none; } }
+
+    .page-hero {
+      min-height: 360px; padding: 7rem 2rem 3rem;
+      background: linear-gradient(160deg, #071f12 0%, var(--green-dark) 100%);
+      display: flex; align-items: flex-end; position: relative; overflow: hidden;
+    }
+    .page-hero-pattern { position: absolute; inset: 0; opacity: 0.05; background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%); background-size: 30px 30px; }
+    .hero-seal { position: absolute; right: 6%; top: 50%; transform: translateY(-50%); width: 160px; height: 160px; border-radius: 50%; border: 2px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; font-size: 4rem; opacity: 0.12; }
+    .page-hero-inner { position: relative; max-width: 1100px; margin: 0 auto; width: 100%; }
+    .breadcrumb { display: flex; gap: 8px; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.82rem; margin-bottom: 1rem; }
+    .breadcrumb a { color: var(--gold-light); text-decoration: none; }
+    .page-hero h1 { font-family: 'Noto Serif Bengali', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .page-hero p { color: rgba(255,255,255,0.6); font-size: 0.95rem; max-width: 520px; line-height: 1.7; }
+    .hero-meta { display: flex; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .hero-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .hero-meta-item span { color: var(--gold-light); font-weight: 600; }
+
+    .page-body { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 4rem; display: grid; grid-template-columns: 260px 1fr; gap: 3rem; align-items: start; }
+    @media (max-width: 860px) { .page-body { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+    .sidebar { position: sticky; top: 80px; }
+    .sidebar-box { background: var(--white); border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(13,74,47,0.1); margin-bottom: 1.2rem; }
+    .sidebar-title { font-family: 'Noto Serif Bengali', serif; font-size: 0.85rem; font-weight: 700; color: var(--green-dark); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--cream-dark); }
+    .toc-list { list-style: none; }
+    .toc-list li { margin-bottom: 0.2rem; }
+    .toc-list a { font-size: 0.79rem; color: var(--text-soft); text-decoration: none; display: block; padding: 5px 8px; border-radius: 6px; transition: background .15s, color .15s; line-height: 1.4; }
+    .toc-list a:hover { background: rgba(13,74,47,0.06); color: var(--green-dark); }
+    .toc-divider { height: 1px; background: var(--cream-dark); margin: 0.5rem 0; }
+    .back-btn { display: block; text-align: center; background: linear-gradient(135deg, var(--green-dark), var(--green-mid)); color: var(--white); padding: 11px 16px; border-radius: 12px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: opacity .2s; margin-top: 0.8rem; }
+    .back-btn:hover { opacity: 0.88; }
+
+    .preamble { background: linear-gradient(135deg, var(--green-dark), var(--green-mid)); border-radius: 20px; padding: 2.5rem; margin-bottom: 2rem; color: var(--white); text-align: center; }
+    .preamble-arabic { font-size: 1.5rem; color: var(--gold-light); direction: rtl; margin-bottom: 0.8rem; font-family: 'Noto Serif Bengali', serif; }
+    .preamble h2 { font-family: 'Noto Serif Bengali', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.3rem; }
+    .preamble .org-sub { font-size: 0.88rem; color: rgba(255,255,255,0.55); margin-bottom: 1.2rem; }
+    .preamble-divider { width: 60px; height: 2px; background: rgba(201,168,76,0.35); margin: 1.2rem auto; }
+    .preamble-text { font-size: 0.88rem; color: rgba(255,255,255,0.72); line-height: 1.9; max-width: 560px; margin: 0 auto; text-align: justify; }
+    .ameen-text { color: var(--gold-light); font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; font-weight: 700; margin-top: 0.8rem; }
+
+    .intro-block { background: var(--white); border-radius: 14px; border-left: 4px solid var(--gold); padding: 1.4rem 1.6rem; margin-bottom: 2rem; }
+    .intro-block h3 { font-family: 'Noto Serif Bengali', serif; font-size: 0.95rem; font-weight: 700; color: var(--green-dark); margin-bottom: 0.5rem; }
+    .intro-block p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.85; }
+
+    .chapter { margin-bottom: 1.8rem; scroll-margin-top: 84px; }
+    .chapter-header { background: var(--green-dark); color: var(--white); border-radius: 12px 12px 0 0; padding: 0.9rem 1.4rem; display: flex; align-items: center; gap: 0.8rem; }
+    .chapter-num { background: rgba(201,168,76,0.18); border: 1px solid rgba(201,168,76,0.3); color: var(--gold-light); font-family: 'Noto Serif Bengali', serif; font-size: 0.74rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; white-space: nowrap; }
+    .chapter-header h3 { font-family: 'Noto Serif Bengali', serif; font-size: 0.97rem; font-weight: 700; color: var(--white); }
+    .chapter-body { background: var(--white); border: 1px solid rgba(13,74,47,0.1); border-top: none; border-radius: 0 0 12px 12px; overflow: hidden; }
+
+    .article { border-bottom: 1px solid rgba(13,74,47,0.07); }
+    .article:last-child { border-bottom: none; }
+    .article-header { padding: 1rem 1.4rem 0; display: flex; align-items: flex-start; gap: 0.7rem; }
+    .article-badge { background: rgba(45,158,98,0.1); color: var(--green-mid); font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 10px; white-space: nowrap; margin-top: 3px; flex-shrink: 0; }
+    .article-title { font-family: 'Noto Serif Bengali', serif; font-size: 0.93rem; font-weight: 700; color: var(--green-dark); }
+    .article-body { padding: 0.5rem 1.4rem 1.1rem; }
+    .article-body > p { font-size: 0.87rem; color: var(--text-mid); line-height: 1.87; margin-bottom: 0.5rem; }
+
+    .sub-clause { display: flex; gap: 0.8rem; margin-bottom: 0.7rem; padding: 0.8rem 1rem; background: var(--cream); border-radius: 8px; border-left: 3px solid var(--green-light); }
+    .sub-clause:last-child { margin-bottom: 0; }
+    .sub-label { font-family: 'Noto Serif Bengali', serif; font-size: 0.82rem; font-weight: 700; color: var(--green-mid); white-space: nowrap; min-width: 20px; padding-top: 1px; }
+    .sub-clause p { font-size: 0.86rem; color: var(--text-mid); line-height: 1.85; }
+
+    .note { display: flex; gap: 0.8rem; padding: 0.85rem 1rem; background: rgba(201,168,76,0.08); border-radius: 8px; border-left: 3px solid var(--gold); margin-top: 0.6rem; }
+    .note p { font-size: 0.84rem; color: var(--text-mid); line-height: 1.75; }
+    .note-warn { background: rgba(220,80,60,0.05); border-left-color: #c0392b; }
+    .note-warn p { color: #7a2318; }
+
+    .key-stats { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.8rem; }
+    .stat-pill { background: rgba(13,74,47,0.08); color: var(--green-dark); border: 1px solid rgba(13,74,47,0.15); padding: 5px 14px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; }
+    .stat-pill.gold { background: rgba(201,168,76,0.12); color: #7a5a10; border-color: rgba(201,168,76,0.25); }
+
+    .doc-footer { background: var(--white); border: 1px solid rgba(13,74,47,0.1); border-radius: 16px; padding: 1.6rem; text-align: center; margin-top: 2rem; }
+    .doc-footer p { font-size: 0.8rem; color: var(--text-soft); margin-bottom: 0.3rem; }
+    .doc-ameen { font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-dark); margin-top: 0.6rem; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .5s ease, transform .5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    footer { background: #070f09; color: rgba(255,255,255,0.45); padding: 2.5rem 2rem; text-align: center; }
+    .footer-logo { font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.5rem; }
+    footer p { font-size: 0.8rem; margin-bottom: 0.3rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../" class="nav-brand">
+    <div class="nav-logo-circle">ن</div>
+    NAF Care Group
+  </a>
+  <ul class="nav-links">
+    <li><a href="../#dashboard">তহবিল</a></li>
+    <li><a href="../#how">কার্যপ্রণালী</a></li>
+    <li><a href="../#members">সদস্য</a></li>
+    <li><a href="../#investment">বিনিয়োগ</a></li>
+    <li><a href="../about/">আমাদের সম্পর্কে</a></li>
+    <li><a href="." class="active">সংবিধান</a></li>
+  </ul>
+  <a href="../#contact" class="nav-btn">যোগাযোগ</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-pattern"></div>
+  <div class="hero-seal">📜</div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="../">হোম</a> <span>›</span> <span>সংবিধান</span></div>
+    <h1>সংবিধান / গঠনতন্ত্র</h1>
+    <p>NAF Care Group Ltd-এর মূল দলিল। সংগঠনের প্রতিটি কার্যক্রম এই সংবিধানের ভিত্তিতে পরিচালিত।</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">📅 প্রণয়নকাল: <span>২০২৪</span></div>
+      <div class="hero-meta-item">📋 মোট ধারা: <span>১৪</span></div>
+      <div class="hero-meta-item">📍 অঞ্চল: <span>কক্সবাজার</span></div>
+      <div class="hero-meta-item">✅ অবস্থা: <span>কার্যকর</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+  <aside class="sidebar">
+    <div class="sidebar-box">
+      <div class="sidebar-title">📋 সূচিপত্র</div>
+      <ul class="toc-list">
+        <li><a href="#preamble">প্রস্তাবনা</a></li>
+        <li><a href="#intro">ভূমিকা</a></li>
+        <div class="toc-divider"></div>
+        <li><a href="#dh1">ধারা ১ — সমিতির নাম</a></li>
+        <li><a href="#dh2">ধারা ২ — লক্ষ্য ও উদ্দেশ্য</a></li>
+        <li><a href="#dh3">ধারা ৩ — অঞ্চল</a></li>
+        <li><a href="#dh4">ধারা ৪ — কার্যসূচি ও ফি</a></li>
+        <li><a href="#dh5">ধারা ৫ — সদস্য</a></li>
+        <div class="toc-divider"></div>
+        <li><a href="#dh6">ধারা ৬ — শৃঙ্খলা</a></li>
+        <li><a href="#dh7">ধারা ৭ — সদস্যপদ বাতিল</a></li>
+        <li><a href="#dh8">ধারা ৮ — মৃত্যুজনিত বিধান</a></li>
+        <li><a href="#dh9">ধারা ৯ — কার্যকরী পরিষদ</a></li>
+        <li><a href="#dh10">ধারা ১০ — জবাবদিহিতা</a></li>
+        <li><a href="#dh11">ধারা ১১ — চেয়ারম্যান</a></li>
+        <li><a href="#dh12">ধারা ১২ — অফিস সম্পাদক</a></li>
+        <li><a href="#dh13">ধারা ১৩ — অর্থ সম্পাদক</a></li>
+        <li><a href="#dh14">ধারা ১৪ — অর্থবছর</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <div class="sidebar-title">⚡ গুরুত্বপূর্ণ তথ্য</div>
+      <ul class="toc-list">
+        <li><a href="#dh4">💰 মাসিক ফি: ১,০০০ টাকা</a></li>
+        <li><a href="#dh4">🏦 প্রাথমিক জমা: ৩০,০০০ টাকা</a></li>
+        <li><a href="#dh4">📈 বিনিয়োগ সীমা: ৭০%</a></li>
+        <li><a href="#dh6">⚠️ বহিষ্কার: ৪ মাস বকেয়া</a></li>
+        <li><a href="#dh7">💵 মূলধন ফেরত: ১০ লক্ষে</a></li>
+      </ul>
+      <a href="../" class="back-btn">🏠 হোমে ফিরুন</a>
+    </div>
+  </aside>
+
+  <main>
+    <!-- PREAMBLE -->
+    <div class="preamble reveal" id="preamble">
+      <div class="preamble-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+      <h2>NAF Care Group Ltd</h2>
+      <div class="org-sub">গঠনতন্ত্র / সংবিধান</div>
+      <div class="preamble-divider"></div>
+      <p class="preamble-text">যে কোন প্রতিষ্ঠানের সংবিধানই একটি মৌলিক দলিল হিসেবে বিবেচিত হয়। সংগঠন পরিচালনা, শৃঙ্খলা ও নীতিমালা সংরক্ষণে এর প্রয়োজনীয়তা অনস্বীকার্য। এই সংগঠনের সংবিধান এক পবিত্র আমানত। এর প্রতিটি দিক কুরআন, সুন্নাহর ঐতিহ্যের আলোকে প্রণয়ন করা হয়েছে। তাই এই সমিতির সকল কর্মতৎপরতা এই সংবিধানের ভিত্তিতে পরিচালিত হয়।
+      <br><br>মৌলিক নীতিমালাকে অক্ষুণ্ণ রেখে পরিবেশ ও পরিস্থিতির দাবি অনুসারে এ সংবিধানে বিভিন্ন সময় সংশোধনী আনা হবে।
+      <br><br>আল্লাহ তায়ালা আমাদের সংবিধানের আলোকে সংগঠনের যাবতীয় কাজ আঞ্জাম দেয়ার তৌফিক দিন।</p>
+      <div class="preamble-divider"></div>
+      <div class="ameen-text">আমীন!</div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="intro-block reveal" id="intro">
+      <h3>📖 ভূমিকা</h3>
+      <p>আমরা প্রত্যেক সদস্য এই সমিতির সংবিধানের উপরে দৃঢ় বিশ্বাস রাখি যে, কুরআন ও হাদিসের আলোকে সুদমুক্ত হালাল পন্থায় জীবন ব্যবস্থাই শ্রেষ্ঠ।</p>
+    </div>
+
+    <!-- ধারা ১ -->
+    <div class="chapter reveal" id="dh1">
+      <div class="chapter-header"><span class="chapter-num">ধারা ১</span><h3>সমিতির নাম ও পরিচয়</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ১</span><div class="article-title">নাম</div></div>
+          <div class="article-body"><p>এই সমিতির নাম — <strong>নাফ কেয়ার গ্রুপ (NAF Care Group Ltd)</strong></p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ২ -->
+    <div class="chapter reveal" id="dh2">
+      <div class="chapter-header"><span class="chapter-num">ধারা ২</span><h3>লক্ষ্য ও উদ্দেশ্য</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ২</span><div class="article-title">সমিতির মূল উদ্দেশ্য</div></div>
+          <div class="article-body">
+            <p>অত্র সমিতির লক্ষ্য ও উদ্দেশ্য হলো: সকল সদস্যদের সম্মিলিত অর্থায়নের ভিত্তিতে, <strong>সুদমুক্ত অর্থনৈতিক জীবন যাপনের প্রয়াসে</strong>, ইসলামি শরীয়াহ ভিত্তিক অর্থ সঞ্চয়, বিনিয়োগ ও ব্যবসায়িক সমিতি প্রতিষ্ঠার মাধ্যমে সকল সদস্যদের ব্যক্তিগত অর্থনৈতিক সমৃদ্ধি বৃদ্ধি করা।</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ৩ -->
+    <div class="chapter reveal" id="dh3">
+      <div class="chapter-header"><span class="chapter-num">ধারা ৩</span><h3>সাংগঠনিক অঞ্চল</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৩</span><div class="article-title">কার্যক্ষেত্র</div></div>
+          <div class="article-body"><p>অত্র সমিতির সাংগঠনিক অঞ্চল: <strong>কক্সবাজার জনপদ।</strong></p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ৪ -->
+    <div class="chapter reveal" id="dh4">
+      <div class="chapter-header"><span class="chapter-num">ধারা ৪</span><h3>কার্যসূচি, ফি ও বিনিয়োগ নীতি</h3></div>
+      <div class="chapter-body">
+
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৪ · ক</span><div class="article-title">সদস্যপদ লাভের শর্ত</div></div>
+          <div class="article-body">
+            <div class="sub-clause">
+              <div class="sub-label">ক)</div>
+              <p>একজন সদস্য যদি সমিতির লক্ষ্য ও উদ্দেশ্যকে তার ব্যবসার লক্ষ্য হিসেবে গ্রহণ করেন, কর্মসূচির সাথে পূর্ণ ঐকমত্য পোষণ করেন ও বাস্তবায়নে সক্রিয়ভাবে অংশগ্রহণ করেন, এই সংবিধানকে সম্পূর্ণরূপে মেনে চলেন এবং সমিতির লক্ষ্যের বিপরীত কোনো কাজ না করেন — তাহলে তিনি সদস্যপদ লাভ করতে পারেন।</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৪ · খ</span><div class="article-title">মাসিক ফি</div></div>
+          <div class="article-body">
+            <div class="sub-clause">
+              <div class="sub-label">খ)</div>
+              <p>প্রত্যেক সদস্য প্রতি মাসে <strong>১,০০০ টাকা</strong> হারে ফি প্রদান করবেন। সার্বিক বিবেচনায় সমিতির সিদ্ধান্তে ফি-র পরিমাণ পরিবর্তিত হতে পারে। কার্যকরী পরিষদ সদস্যদের মতামতের ভিত্তিতে বার্ষিক ফি ও উন্নয়ন ফিসহ অন্যান্য ফি উত্তোলনের সিদ্ধান্ত নিতে পারবেন।</p>
+            </div>
+            <div class="key-stats"><span class="stat-pill gold">মাসিক ফি: ১,০০০ টাকা</span></div>
+          </div>
+        </div>
+
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৪ · গ</span><div class="article-title">নতুন সদস্যের প্রাথমিক জমা</div></div>
+          <div class="article-body">
+            <div class="sub-clause">
+              <div class="sub-label">গ)</div>
+              <p>প্রত্যেক নতুন সদস্যকে সমিতির ভিত্তি মজবুতের লক্ষ্যে প্রাথমিকভাবে <strong>৩০,০০০ টাকা</strong> জমা করতে হবে। এই টাকা জমাদানের জন্য <strong>৪ মাস</strong> সময় দেওয়া হবে।</p>
+            </div>
+            <div class="note note-warn">
+              <span>⚠️</span>
+              <p>৩০,০০০ টাকা ৪ মাসের মধ্যে জমা করতে না পারলে <strong>সদস্যপদ বাতিল</strong> বলে গণ্য হবে।</p>
+            </div>
+            <div class="key-stats">
+              <span class="stat-pill gold">প্রাথমিক জমা: ৩০,০০০ টাকা</span>
+              <span class="stat-pill">সময়সীমা: ৪ মাস</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৪ · ঘ</span><div class="article-title">বিনিয়োগ নীতি</div></div>
+          <div class="article-body">
+            <div class="sub-clause">
+              <div class="sub-label">ঘ)</div>
+              <p>সমিতির মোট মূলধন <strong>২.৫ লক্ষ টাকা</strong> হলে সুদবিহীন লাভজনক ও নিরাপদ খাতে দুই-তৃতীয়াংশ সদস্যের মতামতের ভিত্তিতে মূলধনের সর্বোচ্চ <strong>৭০%</strong> বিনিয়োগ করা যাবে। পরবর্তী বিনিয়োগেও <strong>৩০% রিজার্ভ</strong> বলবৎ থাকবে।</p>
+            </div>
+            <div class="key-stats">
+              <span class="stat-pill">বিনিয়োগ শুরু: ২.৫ লক্ষ টাকায়</span>
+              <span class="stat-pill gold">সর্বোচ্চ: ৭০%</span>
+              <span class="stat-pill">রিজার্ভ: ৩০%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৪ · ঙ</span><div class="article-title">লভ্যাংশ বণ্টন</div></div>
+          <div class="article-body">
+            <div class="sub-clause">
+              <div class="sub-label">ঙ)</div>
+              <p>সমিতির মোট মূলধন কমপক্ষে <strong>১০ লক্ষ টাকা</strong> হলে লভ্যাংশ বণ্টন করার বিষয়ে বিবেচনা করা হবে।</p>
+            </div>
+            <div class="key-stats"><span class="stat-pill gold">লভ্যাংশ বণ্টন: ১০ লক্ষ টাকায়</span></div>
+          </div>
+        </div>
+
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৪ · চ</span><div class="article-title">সাধারণ সভা</div></div>
+          <div class="article-body">
+            <div class="sub-clause">
+              <div class="sub-label">চ)</div>
+              <p>প্রতি <strong>২ মাস</strong> অন্তর সাধারণ সভা অনুষ্ঠিত হবে। কার্যকরী পরিষদ সমিতির যাবতীয় বিষয় সদস্যদের নিকট উপস্থাপন করবে। প্রতি মাসে অন্তত <strong>একবার</strong> কার্যকরী পরিষদের সভা বসতে হবে। তাছাড়া প্রয়োজনে যেকোনো সময় জরুরি সভার আহ্বান করা যাবে।</p>
+            </div>
+            <div class="note"><span>📌</span><p><strong>প্রত্যেক সভায় সকল সদস্যদের উপস্থিতি বাধ্যতামূলক।</strong></p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ধারা ৫ -->
+    <div class="chapter reveal" id="dh5">
+      <div class="chapter-header"><span class="chapter-num">ধারা ৫</span><h3>সদস্য সংখ্যা ও দায়িত্ব</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৫ · ক</span><div class="article-title">সদস্য সংখ্যা</div></div>
+          <div class="article-body">
+            <div class="sub-clause"><div class="sub-label">ক)</div><p>মোট সদস্য সংখ্যা হবে <strong>১০ জন।</strong></p></div>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৫ · খ</span><div class="article-title">সদস্যদের কাজ</div></div>
+          <div class="article-body">
+            <div class="sub-clause">
+              <div class="sub-label">১)</div>
+              <p>প্রতি মাসের <strong>১ থেকে ১০ তারিখের মধ্যে</strong> নিজ দায়িত্বে নির্ধারিত ফি অর্থ সম্পাদককে পরিশোধ করে রশিদ সংগ্রহ করতে হবে। ব্যাংকে জমা দিলে রশিদ অর্থ সম্পাদক বরাবর পৌঁছাতে হবে।</p>
+            </div>
+            <div class="sub-clause">
+              <div class="sub-label">২)</div>
+              <p>সমিতির সকল কর্মসূচিতে যথাসময়ে উপস্থিত থাকতে হবে। যৌক্তিক কারণ ছাড়া অনুপস্থিত থাকলে <strong>১০০ টাকা জরিমানা</strong> প্রযোজ্য হবে।</p>
+            </div>
+            <div class="sub-clause">
+              <div class="sub-label">৩)</div>
+              <p>কোনো সদস্যের ব্যক্তিগত ও সমাজ-রাষ্ট্র বিরোধী কোনো কার্যকলাপের দায়ভার সমিতি বহন করবে না।</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ৬ -->
+    <div class="chapter reveal" id="dh6">
+      <div class="chapter-header"><span class="chapter-num">ধারা ৬</span><h3>শৃঙ্খলা ও জবাবদিহিতা</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৬ · ক</span><div class="article-title">নিয়ম লঙ্ঘনের পরিণতি</div></div>
+          <div class="article-body">
+            <div class="sub-clause"><div class="sub-label">ক)</div><p>কোনো সদস্য সমিতির ধারা লঙ্ঘন করলে বা ক্ষতি সাধন করলে সমিতির নিকট সন্তোষজনক জবাবদিহি করতে হবে।</p></div>
+            <div class="note note-warn"><span>⚖️</span><p>অন্যথায় <strong>দুই-তৃতীয়াংশ সদস্যের মতামতের</strong> ভিত্তিতে আর্থিক জরিমানা অথবা সদস্যপদ বাতিলের সিদ্ধান্ত নেওয়া হবে।</p></div>
+          </div>
+        </div>
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৬ · খ</span><div class="article-title">চাঁদা না দেওয়ার পরিণতি</div></div>
+          <div class="article-body">
+            <div class="sub-clause"><div class="sub-label">খ)</div><p>কোনো সদস্য একটানা <strong>৪ মাস</strong> মাসিক ফি আদায় না করলে সদস্যপদ <strong>চূড়ান্তরূপে বাতিল</strong> বলে গণ্য হবে।</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ৭ -->
+    <div class="chapter reveal" id="dh7">
+      <div class="chapter-header"><span class="chapter-num">ধারা ৭</span><h3>সদস্যপদ বাতিল ও মূলধন ফেরত</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৭</span><div class="article-title">মূলধন ফেরত পাওয়ার শর্ত</div></div>
+          <div class="article-body">
+            <p>কোনো সদস্য স্বেচ্ছায় বা সংগঠনের সিদ্ধান্তে সদস্যপদ বাতিল করতে চাইলে, মূলধন ফেরত পেতে সংগঠনের মোট মূলধন <strong>১০ লক্ষ টাকা</strong> না হওয়া পর্যন্ত অপেক্ষা করতে হবে।</p>
+            <div class="note"><span>💰</span><p>তারপর <strong>সকল সদস্যের মতামতের ভিত্তিতে</strong> মূল জমা টাকা ফেরত দেওয়া হবে।</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ৮ -->
+    <div class="chapter reveal" id="dh8">
+      <div class="chapter-header"><span class="chapter-num">ধারা ৮</span><h3>মৃত্যুজনিত বিধান</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৮</span><div class="article-title">সদস্যের মৃত্যু হলে করণীয়</div></div>
+          <div class="article-body">
+            <p>কোনো সদস্যের মৃত্যু হলে তার <strong>নমিনি সদস্যপদ চালিয়ে যাবেন।</strong></p>
+            <div class="sub-clause"><div class="sub-label">→</div><p>নমিনি অপারগতা প্রকাশ করলে পরবর্তী <strong>৩ মাসের মধ্যে</strong> মূলধন লভ্যাংশসহ ফেরত দেওয়া হবে।</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ৯ -->
+    <div class="chapter reveal" id="dh9">
+      <div class="chapter-header"><span class="chapter-num">ধারা ৯</span><h3>কার্যকরী পরিষদ গঠন</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৯ · ক</span><div class="article-title">পরিষদ গঠন পদ্ধতি</div></div>
+          <div class="article-body"><div class="sub-clause"><div class="sub-label">ক)</div><p>সদস্যদের প্রত্যক্ষ ভোটে <strong>৩ জন সদস্য</strong> বিশিষ্ট কার্যকরী পরিষদ গঠন করা হবে।</p></div></div>
+        </div>
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ৯ · খ</span><div class="article-title">পরিষদের মেয়াদ</div></div>
+          <div class="article-body"><div class="sub-clause"><div class="sub-label">খ)</div><p>কার্যকরী পরিষদের মেয়াদ <strong>২ বছর।</strong> মেয়াদ শেষে <strong>১০ দিবসের মধ্যে</strong> পরবর্তী নির্বাচনের আয়োজন করতে হবে।</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ১০ -->
+    <div class="chapter reveal" id="dh10">
+      <div class="chapter-header"><span class="chapter-num">ধারা ১০</span><h3>পরিষদের জবাবদিহিতা</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ১০</span><div class="article-title">দায়বদ্ধতা ও উপ-নির্বাচন</div></div>
+          <div class="article-body">
+            <p>কার্যকরী পরিষদ তাদের কাজের জন্য সদস্যদের নিকট দায়ী থাকবে।</p>
+            <div class="note"><span>🗳️</span><p><strong>দুই-তৃতীয়াংশ সদস্য</strong> প্রয়োজনবোধ করলে পরিষদ বা পরিষদের কোনো সদস্য পরিবর্তনে <strong>উপ-নির্বাচন</strong> করা হবে।</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ১১-১৩ -->
+    <div class="chapter reveal" id="dh11">
+      <div class="chapter-header"><span class="chapter-num">ধারা ১১–১৩</span><h3>পদ ও দায়িত্ব বিভাজন</h3></div>
+      <div class="chapter-body">
+        <div class="article" id="dh11i">
+          <div class="article-header"><span class="article-badge">ধারা ১১</span><div class="article-title">চেয়ারম্যানের দায়িত্ব</div></div>
+          <div class="article-body"><p>চেয়ারম্যান সমিতির সার্বিক শৃঙ্খলা বিধান, সদস্যদের দায়িত্ব বণ্টন ও <strong>সর্বোচ্চ নির্বাহীর</strong> দায়িত্বে থাকবেন।</p></div>
+        </div>
+        <div class="article" id="dh12">
+          <div class="article-header"><span class="article-badge">ধারা ১২</span><div class="article-title">অফিস সম্পাদকের দায়িত্ব</div></div>
+          <div class="article-body"><p>অফিস সম্পাদক সমিতির সকল বিজ্ঞপ্তি প্রদান এবং সংগঠনের <strong>সকল দাপ্তরিক নথিপত্র সংরক্ষণ</strong> করবেন।</p></div>
+        </div>
+        <div class="article" id="dh13">
+          <div class="article-header"><span class="article-badge">ধারা ১৩</span><div class="article-title">অর্থ সম্পাদকের দায়িত্ব</div></div>
+          <div class="article-body"><p>অর্থ সম্পাদক প্রতিমাসের <strong>০১ থেকে ০৫ তারিখের মধ্যে</strong> মাসিক ফি সংগ্রহ করে <strong>১০ তারিখের মধ্যে</strong> ব্যাংকে জমা করবেন এবং সমিতির যাবতীয় আর্থিক হিসাব সংরক্ষণ করবেন।</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ধারা ১৪ -->
+    <div class="chapter reveal" id="dh14">
+      <div class="chapter-header"><span class="chapter-num">ধারা ১৪</span><h3>আর্থিক বছর</h3></div>
+      <div class="chapter-body">
+        <div class="article">
+          <div class="article-header"><span class="article-badge">ধারা ১৪</span><div class="article-title">অর্থবছর গণনা</div></div>
+          <div class="article-body">
+            <p>সমিতির অর্থবছর <strong>জুলাই মাস</strong> থেকে পরবর্তী <strong>জুন মাস</strong> পর্যন্ত গণনা করা হবে।</p>
+            <div class="key-stats"><span class="stat-pill">অর্থবছর: জুলাই → জুন</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-footer reveal">
+      <p>📋 <strong>NAF Care Group Ltd — গঠনতন্ত্র</strong></p>
+      <p>এই সংবিধান সকল সদস্যের সম্মতিতে প্রণীত এবং কার্যকর।</p>
+      <p style="margin-top:6px; font-size:0.75rem; color:#aaa;">প্রণয়নকাল: ২০২৪ · অঞ্চল: কক্সবাজার জনপদ</p>
+      <div class="doc-ameen">আমীন!</div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-logo">ن &nbsp; NAF Care Group Ltd</div>
+  <p>ইসলামী শরিয়াহ ভিত্তিক সঞ্চয় ও বিনিয়োগ গ্রুপ</p>
+  <p style="margin-top:4px">© ২০২৪ NAF Care Group Ltd. সকল স্বত্ব সংরক্ষিত।</p>
+  <div class="footer-links">
+    <a href="../">হোম</a>
+    <a href="../about/">আমাদের সম্পর্কে</a>
+    <a href=".">সংবিধান</a>
+    <a href="../#contact">যোগাযোগ</a>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
