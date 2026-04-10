@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>আমাদের সম্পর্কে — NAF Care Group Ltd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-dark:  #0d4a2f;
+      --green-mid:   #1a6b42;
+      --green-light: #2d9e62;
+      --gold:        #c9a84c;
+      --gold-light:  #e8c97a;
+      --cream:       #faf7f0;
+      --cream-dark:  #f0ead8;
+      --text-dark:   #1a1a1a;
+      --text-mid:    #3a3a3a;
+      --text-soft:   #6b6b6b;
+      --white:       #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans Bengali', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,74,47,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+      padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-brand { display: flex; align-items: center; gap: 10px; color: var(--gold-light); font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; }
+    .nav-logo-circle { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-light)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--green-dark); font-weight: 900; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+    .nav-btn { background: var(--gold); color: var(--green-dark); padding: 7px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-decoration: none; transition: background .2s; }
+    .nav-btn:hover { background: var(--gold-light); }
+
+    /* HERO BANNER */
+    .page-hero {
+      min-height: 340px; padding: 7rem 2rem 3rem;
+      background: linear-gradient(160deg, var(--green-dark) 0%, var(--green-mid) 100%);
+      display: flex; align-items: flex-end; position: relative; overflow: hidden;
+    }
+    .page-hero-pattern { position: absolute; inset: 0; opacity: 0.04; background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%); background-size: 30px 30px; }
+    .page-hero-inner { position: relative; max-width: 1100px; margin: 0 auto; width: 100%; }
+    .breadcrumb { display: flex; gap: 8px; align-items: center; color: rgba(255,255,255,0.5); font-size: 0.82rem; margin-bottom: 1rem; }
+    .breadcrumb a { color: var(--gold-light); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .page-hero h1 { font-family: 'Noto Serif Bengali', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+    .page-hero p { color: rgba(255,255,255,0.65); font-size: 1rem; max-width: 520px; line-height: 1.7; }
+
+    /* CONTENT */
+    .content { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+
+    /* Mission cards */
+    .mission-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; margin-bottom: 4rem; }
+    .mission-card { background: var(--white); border-radius: 16px; padding: 1.8rem; border-top: 4px solid var(--green-light); transition: transform .2s, box-shadow .2s; }
+    .mission-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(13,74,47,0.1); }
+    .mission-card:nth-child(2) { border-top-color: var(--gold); }
+    .mission-card:nth-child(3) { border-top-color: var(--green-dark); }
+    .mission-card:nth-child(4) { border-top-color: #2d9e62; }
+    .mission-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .mission-card h3 { font-family: 'Noto Serif Bengali', serif; font-size: 1rem; font-weight: 700; color: var(--green-dark); margin-bottom: 0.5rem; }
+    .mission-card p { font-size: 0.83rem; color: var(--text-soft); line-height: 1.7; }
+
+    /* Story section */
+    .story-section { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; align-items: center; }
+    .story-text h2 { font-family: 'Noto Serif Bengali', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--green-dark); margin-bottom: 1rem; }
+    .story-text p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1rem; }
+    .story-visual { background: linear-gradient(135deg, var(--green-dark), var(--green-mid)); border-radius: 20px; padding: 2.5rem; text-align: center; color: var(--white); }
+    .story-arabic { font-size: 1.6rem; color: var(--gold-light); direction: rtl; margin-bottom: 1rem; font-family: 'Noto Serif Bengali', serif; }
+    .story-visual p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.7; }
+    .story-visual .highlight { font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold-light); margin: 1rem 0 0.5rem; }
+
+    /* Section title */
+    .section-tag { display: inline-block; background: rgba(45,158,98,0.12); color: var(--green-mid); border: 1px solid rgba(45,158,98,0.25); padding: 5px 16px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Noto Serif Bengali', serif; font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 700; color: var(--green-dark); margin-bottom: 0.6rem; }
+    .section-desc { color: var(--text-soft); font-size: 0.9rem; line-height: 1.7; margin-bottom: 2rem; }
+
+    /* Members */
+    .members-section { margin-bottom: 4rem; }
+    .members-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .member-card { background: var(--white); border: 1px solid rgba(13,74,47,0.1); border-radius: 16px; padding: 2rem; flex: 1 1 260px; max-width: 320px; transition: box-shadow .2s, transform .2s; }
+    .member-card:hover { box-shadow: 0 8px 24px rgba(13,74,47,0.1); transform: translateY(-3px); }
+    .member-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--green-dark), var(--green-mid)); color: var(--white); font-family: 'Noto Serif Bengali', serif; font-size: 1.8rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .member-card h4 { font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; font-weight: 700; color: var(--green-dark); margin-bottom: 0.2rem; }
+    .member-role { font-size: 0.8rem; color: var(--text-soft); margin-bottom: 0.6rem; }
+    .member-badge { display: inline-block; background: rgba(45,158,98,0.1); color: var(--green-mid); padding: 3px 12px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; }
+
+    /* Values */
+    .values-section { background: var(--green-dark); border-radius: 24px; padding: 3rem; margin-bottom: 4rem; }
+    .values-section .section-tag { background: rgba(201,168,76,0.15); color: var(--gold-light); border-color: rgba(201,168,76,0.3); }
+    .values-section .section-title { color: var(--white); }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+    .value-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .value-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(201,168,76,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .value-item h4 { font-family: 'Noto Serif Bengali', serif; font-size: 0.92rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.3rem; }
+    .value-item p { font-size: 0.8rem; color: rgba(255,255,255,0.58); line-height: 1.6; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 2rem; margin-bottom: 4rem; }
+    .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--green-light), var(--gold)); }
+    .tl-item { position: relative; margin-bottom: 2rem; }
+    .tl-dot { position: absolute; left: -2rem; top: 4px; width: 20px; height: 20px; border-radius: 50%; background: linear-gradient(135deg, var(--green-mid), var(--green-light)); border: 3px solid var(--cream); box-shadow: 0 2px 8px rgba(13,74,47,0.3); }
+    .tl-date { font-size: 0.75rem; color: var(--green-mid); font-weight: 600; margin-bottom: 0.3rem; }
+    .tl-item h4 { font-family: 'Noto Serif Bengali', serif; font-size: 0.97rem; font-weight: 700; color: var(--green-dark); margin-bottom: 0.3rem; }
+    .tl-item p { font-size: 0.83rem; color: var(--text-soft); line-height: 1.65; }
+
+    /* CTA */
+    .cta-box { background: linear-gradient(135deg, var(--green-dark), var(--green-mid)); border-radius: 20px; padding: 2.5rem; text-align: center; color: var(--white); }
+    .cta-box h3 { font-family: 'Noto Serif Bengali', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.6rem; }
+    .cta-box p { color: rgba(255,255,255,0.65); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--green-dark); padding: 12px 28px; border-radius: 30px; font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: transform .2s; }
+    .btn-gold:hover { transform: translateY(-2px); }
+    .btn-ghost { border: 1.5px solid rgba(255,255,255,0.35); color: var(--white); padding: 12px 28px; border-radius: 30px; font-size: 0.9rem; text-decoration: none; transition: border-color .2s; }
+    .btn-ghost:hover { border-color: var(--gold-light); }
+
+    /* Footer */
+    footer { background: #070f09; color: rgba(255,255,255,0.45); padding: 2.5rem 2rem; text-align: center; }
+    .footer-logo { font-family: 'Noto Serif Bengali', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold-light); margin-bottom: 0.5rem; }
+    footer p { font-size: 0.8rem; margin-bottom: 0.3rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.78rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      .story-section { grid-template-columns: 1fr; }
+      .nav-links, .nav-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../" class="nav-brand">
+    <div class="nav-logo-circle">ن</div>
+    NAF Care Group
+  </a>
+  <ul class="nav-links">
+    <li><a href="../#dashboard">তহবিল</a></li>
+    <li><a href="../#how">কার্যপ্রণালী</a></li>
+    <li><a href="../#members">সদস্য</a></li>
+    <li><a href="../#investment">বিনিয়োগ</a></li>
+    <li><a href="." class="active">আমাদের সম্পর্কে</a></li>
+    <li><a href="../constitution/">সংবিধান</a></li>
+  </ul>
+  <a href="../#contact" class="nav-btn">যোগাযোগ</a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-pattern"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="../">হোম</a> <span>›</span> <span>আমাদের সম্পর্কে</span>
+    </div>
+    <h1>আমাদের সম্পর্কে</h1>
+    <p>NAF Care Group — বিশ্বাস, স্বচ্ছতা ও ইসলামী শরিয়াহর ভিত্তিতে গড়া একটি সঞ্চয় ও বিনিয়োগ সমিতি।</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- Mission cards -->
+  <div class="mission-grid reveal">
+    <div class="mission-card">
+      <div class="mission-icon">🤝</div>
+      <h3>বিশ্বাস ও স্বচ্ছতা</h3>
+      <p>প্রতিটি লেনদেন সকল সদস্যের জন্য উন্মুক্ত। Google Sheets-এ রিয়েল-টাইম হিসাব।</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-icon">☪️</div>
+      <h3>হালাল বিনিয়োগ</h3>
+      <p>সম্পূর্ণ ইসলামী শরিয়াহ অনুযায়ী। কোনো সুদভিত্তিক বা হারাম খাতে বিনিয়োগ নেই।</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-icon">⚖️</div>
+      <h3>গণতান্ত্রিক সিদ্ধান্ত</h3>
+      <p>প্রতিটি বড় সিদ্ধান্ত সকল সদস্যের সম্মতিতে নেওয়া হয়। কেউ একা সিদ্ধান্ত নিতে পারেন না।</p>
+    </div>
+    <div class="mission-card">
+      <div class="mission-icon">🌱</div>
+      <h3>দীর্ঘমেয়াদী লক্ষ্য</h3>
+      <p>ছোট ছোট সঞ্চয়ে বড় তহবিল গড়ে তুলে লাভজনক খাতে বিনিয়োগ করা।</p>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <div class="story-section reveal">
+    <div class="story-text">
+      <span class="section-tag">📖 আমাদের গল্প</span>
+      <h2>কেন এই গ্রুপ তৈরি করা হলো?</h2>
+      <p>কয়েকজন বিশ্বস্ত মানুষ মিলে একটি স্বপ্ন দেখেছিলেন — ছোট ছোট সঞ্চয়ে একদিন বড় কিছু করা যাবে। সেই স্বপ্ন থেকেই ২০২৪ সালে জন্ম নিয়েছে NAF Care Group Ltd।</p>
+      <p>আমাদের বিশ্বাস, একা যা সম্ভব নয়, একসাথে তা অর্জন করা যায়। নিয়মিত সঞ্চয়, স্বচ্ছ হিসাব এবং সম্মিলিত সিদ্ধান্তই আমাদের শক্তি।</p>
+      <p>ইসলামী মুশারাকা পদ্ধতিতে পরিচালিত এই গ্রুপে প্রতিটি সদস্য সমান গুরুত্ব বহন করেন।</p>
+    </div>
+    <div class="story-visual">
+      <div class="story-arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+      <p>পরম করুণাময় ও অসীম দয়ালু আল্লাহর নামে</p>
+      <div class="highlight">ইসলামী মুশারাকা পদ্ধতি</div>
+      <p>অংশীদারিত্বের মাধ্যমে হালাল উপায়ে সম্পদ বৃদ্ধি করা আমাদের মূলনীতি।</p>
+    </div>
+  </div>
+
+  <!-- Members -->
+  <div class="members-section reveal">
+    <span class="section-tag">🤝 প্রতিষ্ঠাতা সদস্যবৃন্দ</span>
+    <h2 class="section-title">আমাদের টিম</h2>
+    <p class="section-desc">NAF Care Group-এর তিন প্রতিষ্ঠাতা সদস্য — যারা এই উদ্যোগের স্বপ্নদ্রষ্টা।</p>
+    <div class="members-grid">
+      <!-- সদস্যের নাম ও পদবী এখানে আপডেট করুন -->
+      <div class="member-card">
+        <div class="member-avatar">N</div>
+        <h4>সদস্য — N</h4>
+        <!-- উদাহরণ: <h4>নাফিস আহমেদ</h4> -->
+        <div class="member-role">প্রতিষ্ঠাতা সদস্য · চেয়ারম্যান</div>
+        <span class="member-badge">✓ সক্রিয়</span>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar">A</div>
+        <h4>সদস্য — A</h4>
+        <div class="member-role">প্রতিষ্ঠাতা সদস্য · অফিস সম্পাদক</div>
+        <span class="member-badge">✓ সক্রিয়</span>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar">F</div>
+        <h4>সদস্য — F</h4>
+        <div class="member-role">প্রতিষ্ঠাতা সদস্য · অর্থ সম্পাদক</div>
+        <span class="member-badge">✓ সক্রিয়</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Values -->
+  <div class="values-section reveal">
+    <span class="section-tag">💎 আমাদের মূল্যবোধ</span>
+    <h2 class="section-title">যা আমাদের আলাদা করে</h2>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon">📊</div>
+        <div>
+          <h4>সম্পূর্ণ স্বচ্ছতা</h4>
+          <p>প্রতিটি পয়সার হিসাব Google Sheets-এ সংরক্ষিত এবং সকলের জন্য দৃশ্যমান।</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🛡️</div>
+        <div>
+          <h4>সদস্য সুরক্ষা</h4>
+          <p>কোনো সিদ্ধান্তই এককভাবে নেওয়া যাবে না — সকলের মত প্রয়োজন।</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">☪️</div>
+        <div>
+          <h4>শরিয়াহ সম্মত</h4>
+          <p>সুদ, জুয়া বা হারাম কোনো খাতে বিনিয়োগ করা হবে না — কখনোই না।</p>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🤲</div>
+        <div>
+          <h4>পারস্পরিক সহযোগিতা</h4>
+          <p>একে অপরের বিপদে এগিয়ে আসা — এটাই আমাদের সংস্কৃতি।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="reveal">
+    <span class="section-tag">📅 যাত্রার ইতিহাস</span>
+    <h2 class="section-title">আমাদের যাত্রা</h2>
+    <p class="section-desc">ছোট্ট একটি স্বপ্ন থেকে শুরু হয়েছিল এই উদ্যোগ।</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">২০২৪</div>
+        <h4>গ্রুপের সূচনা</h4>
+        <p>তিন বিশ্বস্ত বন্ধু মিলে সিদ্ধান্ত নেন একটি সঞ্চয় ও বিনিয়োগ গ্রুপ তৈরি করার।</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">২০২৪</div>
+        <h4>সংবিধান প্রণয়ন</h4>
+        <p>গ্রুপের মূল নিয়মাবলী ও সংবিধান সকল সদস্যের সম্মতিতে চূড়ান্ত করা হয়।</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">২০২৪</div>
+        <h4>আনুষ্ঠানিক যাত্রা শুরু</h4>
+        <p>মাসিক চাঁদা সংগ্রহ শুরু। Google Sheets-এ হিসাব সংরক্ষণ চালু।</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">২০২৫ — চলমান</div>
+        <h4>তহবিল গঠন</h4>
+        <p>নিয়মিত সঞ্চয়ের মাধ্যমে বিনিয়োগ লক্ষ্যমাত্রার দিকে এগিয়ে যাচ্ছি।</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box reveal">
+    <h3>আরও জানতে চান?</h3>
+    <p>আমাদের সংবিধান পড়ুন অথবা সরাসরি যোগাযোগ করুন।</p>
+    <div class="cta-btns">
+      <a href="../constitution/" class="btn-gold">📜 সংবিধান পড়ুন</a>
+      <a href="../#contact" class="btn-ghost">📬 যোগাযোগ করুন</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ن &nbsp; NAF Care Group Ltd</div>
+  <p>ইসলামী শরিয়াহ ভিত্তিক সঞ্চয় ও বিনিয়োগ গ্রুপ</p>
+  <p style="margin-top:4px">© ২০২৪ NAF Care Group Ltd. সকল স্বত্ব সংরক্ষিত।</p>
+  <div class="footer-links">
+    <a href="../">হোম</a>
+    <a href=".">আমাদের সম্পর্কে</a>
+    <a href="../constitution/">সংবিধান</a>
+    <a href="../#contact">যোগাযোগ</a>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
