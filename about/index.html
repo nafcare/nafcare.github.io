@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>আমাদের সম্পর্কে — NAF Care Group Ltd</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="https://nafcare.github.io/nafcare.png" />
+  <style>
+    .value-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      border: 1px solid rgba(201,168,76,0.12);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+    .value-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.35); }
+    .value-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+    .value-card h3 { font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--dark); margin-bottom:.5rem; }
+    .value-card p { font-size:.85rem; color:var(--text-mid); }
+
+    .story-grid { display:grid; grid-template-columns:1.1fr 0.9fr; gap:3.5rem; align-items:center; }
+    @media(max-width:750px){ .story-grid{grid-template-columns:1fr;} }
+    .story-text p { color:var(--text-mid); font-size:.93rem; margin-bottom:1.1rem; line-height:1.95; }
+
+    .arabic-box {
+      background: linear-gradient(145deg, var(--green), var(--green-mid));
+      border-radius: 20px; padding: 3rem 2.5rem; text-align:center; position:relative; overflow:hidden;
+    }
+    .arabic-box::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 30% 70%, rgba(201,168,76,0.15) 0%,transparent 60%); }
+    .arabic-box .ar { font-family:'Amiri',serif; font-size:1.6rem; color:var(--gold); display:block; margin-bottom:.6rem; }
+    .arabic-box .translation { font-size:.8rem; color:rgba(255,255,255,0.65); margin-bottom:1.5rem; display:block; }
+    .arabic-box p { font-size:.88rem; color:rgba(255,255,255,0.82); line-height:2; }
+    .arabic-box .method-tag { display:inline-block; margin-top:1.5rem; background:rgba(201,168,76,0.2); border:1px solid rgba(201,168,76,0.4); color:var(--gold); padding:.3rem 1rem; border-radius:50px; font-size:.75rem; }
+
+    .member-grid-about { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    @media(max-width:650px){ .member-grid-about{grid-template-columns:1fr;} }
+    .member-card-about { background:var(--white); border-radius:var(--radius); padding:2rem; text-align:center; border:1px solid rgba(201,168,76,0.12); box-shadow:var(--shadow); transition:var(--transition); }
+    .member-card-about:hover { transform:translateY(-4px); border-color:var(--gold); box-shadow:var(--shadow-gold); }
+    .avatar-lg { width:70px; height:70px; border-radius:50%; background:linear-gradient(135deg,var(--green),var(--green-mid)); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:700; color:var(--gold); margin:0 auto 1rem; border:3px solid rgba(201,168,76,0.25); }
+    .member-card-about h4 { font-family:'Playfair Display',serif; font-size:1rem; color:var(--dark); margin-bottom:.25rem; }
+    .member-card-about .role { font-size:.78rem; color:var(--text-light); margin-bottom:.75rem; }
+    .active-badge { display:inline-flex; align-items:center; gap:.3rem; background:rgba(64,145,108,0.12); color:var(--green-light); padding:.2rem .75rem; border-radius:50px; font-size:.72rem; font-weight:600; }
+
+    .timeline { position:relative; max-width:700px; margin:0 auto; }
+    .timeline::before { content:''; position:absolute; left:28px; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,0.1)); }
+    .tl-item { display:flex; gap:1.5rem; margin-bottom:2rem; }
+    .tl-dot { width:58px; height:58px; flex-shrink:0; border-radius:50%; background:linear-gradient(135deg,var(--green),var(--green-mid)); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:.72rem; font-weight:700; color:var(--gold); text-align:center; border:3px solid var(--cream); box-shadow:0 0 0 2px var(--gold); line-height:1.2; z-index:1; }
+    .tl-content { background:var(--white); border-radius:var(--radius); padding:1.4rem 1.6rem; border:1px solid rgba(201,168,76,0.12); box-shadow:0 2px 12px rgba(26,71,42,0.06); flex:1; }
+    .tl-content h4 { font-family:'Playfair Display',serif; font-size:1rem; color:var(--dark); margin-bottom:.35rem; }
+    .tl-content p { font-size:.84rem; color:var(--text-mid); }
+
+    .about-cta { background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 100%); border-radius:var(--radius); padding:3rem; text-align:center; margin-top:3rem; }
+    .about-cta h3 { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--white); margin-bottom:.6rem; }
+    .about-cta p { color:rgba(255,255,255,0.75); font-size:.9rem; margin-bottom:1.75rem; }
+    .cta-buttons { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .btn-gold { padding:.8rem 1.8rem; background:var(--gold); color:var(--dark); text-decoration:none; border-radius:50px; font-weight:700; font-size:.9rem; transition:var(--transition); font-family:'Noto Serif Bengali',serif; }
+    .btn-gold:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:var(--shadow-gold); }
+    .btn-ghost { padding:.8rem 1.8rem; border:1.5px solid rgba(255,255,255,0.35); color:rgba(255,255,255,0.9); text-decoration:none; border-radius:50px; font-size:.9rem; transition:var(--transition); font-family:'Noto Serif Bengali',serif; }
+    .btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="../" class="nav-brand">
+      <img src="https://nafcare.github.io/nafcare.png" alt="NAF Care Group Logo" />
+      <div class="nav-brand-text"><span>NAF Care Group</span><span>Ltd</span></div>
+    </a>
+    <button class="hamburger" aria-label="মেনু"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="../">হোম</a></li>
+      <li><a href="../about/">আমাদের সম্পর্কে</a></li>
+      <li><a href="../members/">সদস্য</a></li>
+      <li><a href="../investment/">বিনিয়োগ</a></li>
+      <li><a href="../rules/">নিয়মাবলি</a></li>
+      <li><a href="../constitution/">সংবিধান</a></li>
+      <li><a href="../procedure/">কার্যপ্রণালী</a></li>
+      <li><a href="../notice/">নোটিশ</a></li>
+      <li><a href="../faq/">FAQ</a></li>
+      <li><a href="../contact/" class="nav-contact-btn">যোগাযোগ</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb"><a href="../">হোম</a> <span>/</span> আমাদের সম্পর্কে</div>
+  <div class="page-badge">🕌 পরিচিতি</div>
+  <h1>আমাদের সম্পর্কে</h1>
+  <p>NAF Care Group — বিশ্বাস, স্বচ্ছতা ও ইসলামী শরিয়াহর ভিত্তিতে গড়া একটি সঞ্চয় ও বিনিয়োগ সমিতি।</p>
+</div>
+
+<section class="bg-cream">
+  <div class="container">
+
+    <!-- VALUES STRIP -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:1.5rem; margin-bottom:3rem;">
+      <div class="value-card fade-in">
+        <span class="value-icon">🤝</span>
+        <h3>বিশ্বাস ও স্বচ্ছতা</h3>
+        <p>প্রতিটি লেনদেন সকল সদস্যের জন্য উন্মুক্ত। Google Sheets-এ রিয়েল-টাইম হিসাব।</p>
+      </div>
+      <div class="value-card fade-in">
+        <span class="value-icon">☪️</span>
+        <h3>হালাল বিনিয়োগ</h3>
+        <p>সম্পূর্ণ ইসলামী শরিয়াহ অনুযায়ী। কোনো সুদভিত্তিক বা হারাম খাতে বিনিয়োগ নেই।</p>
+      </div>
+      <div class="value-card fade-in">
+        <span class="value-icon">⚖️</span>
+        <h3>গণতান্ত্রিক সিদ্ধান্ত</h3>
+        <p>প্রতিটি বড় সিদ্ধান্ত সকল সদস্যের সম্মতিতে নেওয়া হয়। কেউ একা সিদ্ধান্ত নিতে পারেন না।</p>
+      </div>
+      <div class="value-card fade-in">
+        <span class="value-icon">🌱</span>
+        <h3>দীর্ঘমেয়াদী লক্ষ্য</h3>
+        <p>ছোট ছোট সঞ্চয়ে বড় তহবিল গড়ে তুলে লাভজনক খাতে বিনিয়োগ করা।</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- STORY -->
+    <div class="story-grid fade-in">
+      <div class="story-text">
+        <span class="section-label">📖 আমাদের গল্প</span>
+        <h2 class="section-title">কেন এই গ্রুপ তৈরি করা হলো?</h2>
+        <p>কয়েকজন বিশ্বস্ত মানুষ মিলে একটি স্বপ্ন দেখেছিলেন — ছোট ছোট সঞ্চয়ে একদিন বড় কিছু করা যাবে। সেই স্বপ্ন থেকেই ২০২৪ সালে জন্ম নিয়েছে NAF Care Group Ltd।</p>
+        <p>আমাদের বিশ্বাস, একা যা সম্ভব নয়, একসাথে তা অর্জন করা যায়। নিয়মিত সঞ্চয়, স্বচ্ছ হিসাব এবং সম্মিলিত সিদ্ধান্তই আমাদের শক্তি।</p>
+        <p>ইসলামী মুশারাকা পদ্ধতিতে পরিচালিত এই গ্রুপে প্রতিটি সদস্য সমান গুরুত্ব বহন করেন।</p>
+      </div>
+      <div class="arabic-box fade-in">
+        <span class="ar">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</span>
+        <span class="translation">পরম করুণাময় ও অসীম দয়ালু আল্লাহর নামে</span>
+        <p>আল্লাহর নামে শুরু করা এই যাত্রায় আমরা একে অপরের পাশে থেকে, বিশ্বাস ও সততার সাথে এগিয়ে যাচ্ছি।</p>
+        <span class="method-tag">☪️ ইসলামী মুশারাকা পদ্ধতি</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- MEMBERS -->
+    <div class="text-center mb-3 fade-in">
+      <span class="section-label">🤝 প্রতিষ্ঠাতা সদস্যবৃন্দ</span>
+      <h2 class="section-title">আমাদের টিম</h2>
+      <p class="section-desc" style="margin:0 auto;">NAF Care Group-এর তিন প্রতিষ্ঠাতা সদস্য — যারা এই উদ্যোগের স্বপ্নদ্রষ্টা।</p>
+    </div>
+    <div class="member-grid-about">
+      <div class="member-card-about fade-in">
+        <div class="avatar-lg">N</div>
+        <h4>সদস্য — N</h4>
+        <p class="role">প্রতিষ্ঠাতা সদস্য · চেয়ারম্যান</p>
+        <span class="active-badge">✓ সক্রিয়</span>
+      </div>
+      <div class="member-card-about fade-in">
+        <div class="avatar-lg">A</div>
+        <h4>সদস্য — A</h4>
+        <p class="role">প্রতিষ্ঠাতা সদস্য · অফিস সম্পাদক</p>
+        <span class="active-badge">✓ সক্রিয়</span>
+      </div>
+      <div class="member-card-about fade-in">
+        <div class="avatar-lg">F</div>
+        <h4>সদস্য — F</h4>
+        <p class="role">প্রতিষ্ঠাতা সদস্য · অর্থ সম্পাদক</p>
+        <span class="active-badge">✓ সক্রিয়</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- MORE VALUES -->
+    <div class="text-center mb-3 fade-in">
+      <span class="section-label">💎 আমাদের মূল্যবোধ</span>
+      <h2 class="section-title">যা আমাদের আলাদা করে</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card fade-in">
+        <div class="card-icon">📊</div>
+        <h3>সম্পূর্ণ স্বচ্ছতা</h3>
+        <p>প্রতিটি পয়সার হিসাব Google Sheets-এ সংরক্ষিত এবং সকলের জন্য দৃশ্যমান।</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">🛡️</div>
+        <h3>সদস্য সুরক্ষা</h3>
+        <p>কোনো সিদ্ধান্তই এককভাবে নেওয়া যাবে না — সকলের মত প্রয়োজন।</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">☪️</div>
+        <h3>শরিয়াহ সম্মত</h3>
+        <p>সুদ, জুয়া বা হারাম কোনো খাতে বিনিয়োগ করা হবে না — কখনোই না।</p>
+      </div>
+      <div class="card fade-in">
+        <div class="card-icon">🤲</div>
+        <h3>পারস্পরিক সহযোগিতা</h3>
+        <p>একে অপরের বিপদে এগিয়ে আসা — এটাই আমাদের সংস্কৃতি।</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- TIMELINE -->
+    <div class="text-center mb-3 fade-in">
+      <span class="section-label">📅 যাত্রার ইতিহাস</span>
+      <h2 class="section-title">আমাদের যাত্রা</h2>
+      <p class="section-desc" style="margin:0 auto;">ছোট্ট একটি স্বপ্ন থেকে শুরু হয়েছিল এই উদ্যোগ।</p>
+    </div>
+    <div class="timeline fade-in">
+      <div class="tl-item">
+        <div class="tl-dot">২০২৪</div>
+        <div class="tl-content"><h4>গ্রুপের সূচনা</h4><p>তিন বিশ্বস্ত বন্ধু মিলে সিদ্ধান্ত নেন একটি সঞ্চয় ও বিনিয়োগ গ্রুপ তৈরি করার।</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">২০২৪</div>
+        <div class="tl-content"><h4>সংবিধান প্রণয়ন</h4><p>গ্রুপের মূল নিয়মাবলী ও সংবিধান সকল সদস্যের সম্মতিতে চূড়ান্ত করা হয়।</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">২০২৪</div>
+        <div class="tl-content"><h4>আনুষ্ঠানিক যাত্রা শুরু</h4><p>মাসিক চাঁদা সংগ্রহ শুরু। Google Sheets-এ হিসাব সংরক্ষণ চালু।</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="font-size:.62rem;">২০২৫<br>চলমান</div>
+        <div class="tl-content"><h4>তহবিল গঠন</h4><p>নিয়মিত সঞ্চয়ের মাধ্যমে বিনিয়োগ লক্ষ্যমাত্রার দিকে এগিয়ে যাচ্ছি।</p></div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="about-cta fade-in">
+      <h3>আরও জানতে চান?</h3>
+      <p>আমাদের সংবিধান পড়ুন অথবা সরাসরি যোগাযোগ করুন।</p>
+      <div class="cta-buttons">
+        <a href="../constitution/" class="btn-gold">📜 সংবিধান পড়ুন</a>
+        <a href="../contact/" class="btn-ghost">📬 যোগাযোগ করুন</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><img src="https://nafcare.github.io/nafcare.png" alt="NAF Care Group" /><h3>NAF Care Group Ltd</h3><p>ইসলামী শরিয়াহ ভিত্তিক সঞ্চয় ও বিনিয়োগ গ্রুপ</p><p style="margin-top:.5rem;font-size:.75rem;color:rgba(255,255,255,0.3);">প্রতিষ্ঠাকাল: ২০২৪</p></div>
+      <div class="footer-col"><h4>প্রধান পেজসমূহ</h4><ul><li><a href="../">হোম</a></li><li><a href="../about/">আমাদের সম্পর্কে</a></li><li><a href="../members/">সদস্য</a></li><li><a href="../investment/">বিনিয়োগ</a></li></ul></div>
+      <div class="footer-col"><h4>তথ্য ও নীতি</h4><ul><li><a href="../constitution/">সংবিধান</a></li><li><a href="../rules/">নিয়মাবলি</a></li><li><a href="../procedure/">কার্যপ্রণালী</a></li><li><a href="../faq/">FAQ</a></li></ul></div>
+      <div class="footer-col"><h4>যোগাযোগ</h4><ul><li><a href="../notice/">নোটিশ বোর্ড</a></li><li><a href="../contact/">যোগাযোগ করুন</a></li><li><a href="https://nafcaregroup.blogspot.com" target="_blank">ব্লগ</a></li><li><a href="mailto:info@nafcaregroup.com">ইমেইল</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© ২০২৪ NAF Care Group Ltd. সকল স্বত্ব সংরক্ষিত।</p><div class="halal-badge">☪️ শরিয়াহ কমপ্লায়েন্ট</div></div>
+  </div>
+</footer>
+<script src="../js/main.js"></script>
+</body>
+</html>
