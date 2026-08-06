@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ব্লগ | NAF Care Group Ltd</title>
+<meta name="description" content="NAF Care Group Ltd এর ব্লগ — সর্বশেষ লেখা, আপডেট ও তথ্য।">
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+  }
+  .blog-card .post-thumb {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    background: var(--cream-dark);
+    display: block;
+  }
+  .blog-card .card-body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .post-date {
+    font-size: 0.72rem;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  .blog-card h3 {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+  .blog-card .excerpt {
+    font-size: 0.86rem;
+    color: var(--text-mid);
+    flex-grow: 1;
+    margin-bottom: 1.25rem;
+  }
+  .blog-card .read-more {
+    align-self: flex-start;
+    color: var(--green-light);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .blog-card .read-more:hover { color: var(--gold); }
+
+  .status-msg {
+    text-align: center;
+    color: var(--text-mid);
+    padding: 3rem 0;
+    font-size: 0.95rem;
+  }
+
+  .load-more-wrap { text-align: center; margin-top: 3rem; }
+  #loadMore {
+    display: none;
+    padding: 0.85rem 2.2rem;
+    background: transparent;
+    border: 1.5px solid var(--green);
+    color: var(--green-mid);
+    border-radius: 50px;
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  #loadMore:hover { background: var(--green); color: var(--white); }
+  #loadMore:disabled { opacity: 0.5; cursor: default; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="https://nafcare.github.io/index.html" class="nav-brand">
+      <img src="https://nafcare.github.io/nafcare.png" alt="NAF Care Group Logo">
+      <div class="nav-brand-text">
+        <span>NAF Care Group</span>
+        <span>Ltd.</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://nafcare.github.io/index.html">হোম</a></li>
+      <li><a href="https://nafcare.github.io/about/">আমাদের সম্পর্কে</a></li>
+      <li><a href="https://nafcare.github.io/members/">সদস্য</a></li>
+      <li><a href="https://nafcare.github.io/investment/">বিনিয়োগ</a></li>
+      <li><a href="https://nafcare.github.io/rules/">নিয়মাবলি</a></li>
+      <li><a href="https://nafcare.github.io/constitution/">সংবিধান</a></li>
+      <li><a href="https://nafcare.github.io/procedure/">কার্যপ্রণালী</a></li>
+      <li><a href="https://nafcare.github.io/notice/">নোটিশ</a></li>
+      <li><a href="https://nafcare.github.io/faq/">FAQ</a></li>
+      <li><a href="../blog/" class="active">ব্লগ</a></li>
+      <li><a href="https://nafcare.github.io/contact/" class="nav-contact-btn">যোগাযোগ</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="https://nafcare.github.io/index.html">হোম</a><span>/</span><span>ব্লগ</span>
+  </div>
+  <span class="page-badge">✍️ সর্বশেষ লেখা</span>
+  <h1>আমাদের <span class="text-gold">ব্লগ</span></h1>
+  <p>NAF Care Group এর পক্ষ থেকে নিয়মিত আপডেট, অন্তর্দৃষ্টি ও তথ্যমূলক লেখা।</p>
+</header>
+
+<section class="bg-cream">
+  <div class="container">
+    <div id="status" class="status-msg">লেখা লোড হচ্ছে…</div>
+    <div class="cards-grid" id="posts"></div>
+    <div class="load-more-wrap">
+      <button id="loadMore">আরও লেখা দেখুন</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="https://nafcare.github.io/nafcare.png" alt="NAF Care Group">
+        <h3>NAF Care Group Ltd</h3>
+        <p>ইসলামী শরিয়াহ ভিত্তিক সঞ্চয় ও বিনিয়োগ গ্রুপ</p>
+        <p>প্রতিষ্ঠাকাল: ২০২৪</p>
+      </div>
+      <div class="footer-col">
+        <h4>প্রধান পেজসমূহ</h4>
+        <ul>
+          <li><a href="https://nafcare.github.io/index.html">হোম</a></li>
+          <li><a href="https://nafcare.github.io/about/">আমাদের সম্পর্কে</a></li>
+          <li><a href="https://nafcare.github.io/members/">সদস্য</a></li>
+          <li><a href="https://nafcare.github.io/investment/">বিনিয়োগ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>তথ্য ও নীতি</h4>
+        <ul>
+          <li><a href="https://nafcare.github.io/constitution/">সংবিধান</a></li>
+          <li><a href="https://nafcare.github.io/rules/">নিয়মাবলি</a></li>
+          <li><a href="https://nafcare.github.io/procedure/">কার্যপ্রণালী</a></li>
+          <li><a href="https://nafcare.github.io/faq/">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>যোগাযোগ</h4>
+        <ul>
+          <li><a href="https://nafcare.github.io/notice/">নোটিশ বোর্ড</a></li>
+          <li><a href="https://nafcare.github.io/contact/">যোগাযোগ করুন</a></li>
+          <li><a href="https://nafcaregroup.blogspot.com">ব্লগ</a></li>
+          <li><a href="mailto:nafcaregroup@gmail.com">ইমেইল</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© ২০২৪ NAF Care Group Ltd. সকল স্বত্ব সংরক্ষিত।</p>
+      <span class="halal-badge">☪️ শরিয়াহ কমপ্লায়েন্ট</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+  const BLOG_URL = "https://nafcaregroup.blogspot.com";
+  const MAX_RESULTS = 6;
+  let startIndex = 1;
+  let callbackCounter = 0;
+
+  const postsEl = document.getElementById('posts');
+  const statusEl = document.getElementById('status');
+  const loadMoreBtn = document.getElementById('loadMore');
+
+  function stripHtml(html){
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return (tmp.textContent || tmp.innerText || '').trim();
+  }
+
+  function getThumbnail(entry){
+    if (entry.media$thumbnail && entry.media$thumbnail.url) {
+      return entry.media$thumbnail.url.replace(/\/s\d+(-c)?\//, '/s400/');
+    }
+    const raw = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
+    const match = raw.match(/<img[^>]+src=["']([^"'>]+)["']/i);
+    return match ? match[1] : null;
+  }
+
+  function getPostLink(entry){
+    const alt = entry.link.find(l => l.rel === 'alternate');
+    return alt ? alt.href : '#';
+  }
+
+  function formatDate(published){
+    const d = new Date(published);
+    return d.toLocaleDateString('bn-BD', { year:'numeric', month:'long', day:'numeric' });
+  }
+
+  function renderPosts(entries){
+    entries.forEach(entry => {
+      const title = entry.title.$t;
+      const link = getPostLink(entry);
+      const published = formatDate(entry.published.$t);
+      const rawContent = entry.content ? entry.content.$t : (entry.summary ? entry.summary.$t : '');
+      const excerptText = stripHtml(rawContent).slice(0, 130).trim() + '…';
+      const thumb = getThumbnail(entry);
+
+      const card = document.createElement('a');
+      card.href = link;
+      card.target = '_blank';
+      card.rel = 'noopener';
+      card.style.textDecoration = 'none';
+      card.className = 'card blog-card';
+
+      card.innerHTML = `
+        ${thumb ? `<img class="post-thumb" src="${thumb}" alt="${title}" loading="lazy">` : ''}
+        <div class="card-body">
+          <div class="post-date">${published}</div>
+          <h3>${title}</h3>
+          <div class="excerpt">${excerptText}</div>
+          <span class="read-more">সম্পূর্ণ পড়ুন →</span>
+        </div>
+      `;
+      postsEl.appendChild(card);
+    });
+  }
+
+  // Blogger's JSON feed doesn't send CORS headers, so a plain fetch() fails
+  // cross-origin. JSONP (alt=json-in-script) via a dynamic <script> tag works instead.
+  function fetchPostsJSONP(start){
+    return new Promise((resolve, reject) => {
+      const cbName = 'bloggerCallback_' + (callbackCounter++);
+      const script = document.createElement('script');
+
+      window[cbName] = function(data){
+        resolve(data);
+        delete window[cbName];
+        script.remove();
+      };
+
+      script.onerror = () => {
+        reject(new Error('Failed to load feed script'));
+        delete window[cbName];
+        script.remove();
+      };
+
+      script.src = `${BLOG_URL}/feeds/posts/default?alt=json-in-script&max-results=${MAX_RESULTS}&start-index=${start}&callback=${cbName}`;
+      document.body.appendChild(script);
+    });
+  }
+
+  function loadInitial(){
+    fetchPostsJSONP(startIndex)
+      .then(data => {
+        statusEl.style.display = 'none';
+        const entries = (data.feed && data.feed.entry) || [];
+        if (entries.length === 0){
+          statusEl.style.display = 'block';
+          statusEl.textContent = 'এখনো কোনো পোস্ট নেই।';
+          return;
+        }
+        renderPosts(entries);
+        startIndex += MAX_RESULTS;
+        if (entries.length === MAX_RESULTS){
+          loadMoreBtn.style.display = 'inline-block';
+        }
+      })
+      .catch(err => {
+        statusEl.textContent = 'এই মুহূর্তে পোস্ট লোড করা যাচ্ছে না। পরে আবার চেষ্টা করুন।';
+        console.error(err);
+      });
+  }
+
+  loadMoreBtn.addEventListener('click', () => {
+    loadMoreBtn.disabled = true;
+    loadMoreBtn.textContent = 'লোড হচ্ছে…';
+    fetchPostsJSONP(startIndex)
+      .then(data => {
+        const entries = (data.feed && data.feed.entry) || [];
+        renderPosts(entries);
+        startIndex += MAX_RESULTS;
+        loadMoreBtn.disabled = false;
+        loadMoreBtn.textContent = 'আরও লেখা দেখুন';
+        if (entries.length < MAX_RESULTS){
+          loadMoreBtn.style.display = 'none';
+        }
+      })
+      .catch(err => {
+        loadMoreBtn.textContent = 'ব্যর্থ — আবার চেষ্টা করুন';
+        loadMoreBtn.disabled = false;
+        console.error(err);
+      });
+  });
+
+  loadInitial();
+</script>
+
+</body>
+</html>
